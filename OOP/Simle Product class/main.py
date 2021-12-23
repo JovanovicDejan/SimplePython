@@ -95,10 +95,27 @@ class Catalog:
         return  output
         
 
-product1 = Product("Mars", 30)
-product2 = Product("Chocolate", 100)
-list_of_products = [product1,product2]
-catalog1 = Catalog("Sweet",list_of_products)
-product3 = Product("Snickers", 50)
-catalog1.add_new_product(product3)
-print(catalog1)
+# product1 = Product("Mars", 30)
+# product2 = Product("Chocolate", 100)
+# list_of_products = [product1,product2]
+# catalog1 = Catalog("Sweet",list_of_products)
+# product3 = Product("Snickers", 50)
+# catalog1.add_new_product(product3)
+# print(catalog1)
+
+number_of_catalog = int(input("How many catalag do you want to create? "))  
+list_of_catalog = []            #Create list of catalog so we can work with it easier
+for i in range(number_of_catalog):     
+    catalog_name = input("What is the name of catalog: ")       #For each i create new catalog_name
+    number_of_products = int(input("How many products do you want to add: "))   #After next loop is ended creat new catalog with different number of products
+    list_of_products = []                                       #Create list of products each time for j is ended it create's empty list of products for next catalog
+    for j in range(number_of_products):
+        name_of_product = input("Name of product: ")
+        cost = float(input("What is price of product: "))
+        new_product = Product(name_of_product,cost)         #After user input name and cost of product, we are ready to create a new product with he's parameters
+        list_of_products.append(new_product)                #Add each product to list of product 
+    new_catalog = Catalog(catalog_name,list_of_products)    #After we end with J loop, we are ready to create a new catalog because we have all parameters for it
+    list_of_catalog.append(new_catalog)                     #Aftre create new catalog, we can add it in list of catalogs
+
+for catalog in list_of_catalog:                                #For each catalog in list of catalog's , print each catalog one by one
+    print(catalog)
